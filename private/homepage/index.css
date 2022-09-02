@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --main-color: #ff4500;
+  --background-color: #c6d0d8;
+  --second-color: #ffffff;
+  --search-color: #eeeeee;
+  --second-search-color: #818181;
+  --shadow-color: #9e9e9e;
+  --vote-color: #dddddd;
+  --name-color: #4f4f4f;
+  --second-name-color: #d9d9d9;
+  --trend-color: #ececec;
+  --trend-second-color: #d2d2d2;
+  --arrow-color: #00c608;
+  --black: #111111;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+/* HEADER STYLE STARTS */
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 4rem;
+  background-color: var(--second-color);
+  box-shadow: 0 2px 4px 0 var(--shadow-color);
+}
+
+header div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header div:nth-child(1) a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: var(--black);
+  gap: 0.5rem;
+}
+
+header div:nth-child(1) i {
+  font-size: 2.2rem;
+  color: var(--main-color);
+}
+
+header div:nth-child(1) h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+header div:nth-child(1) span {
+  color: var(--main-color);
+}
+
+header div:nth-child(2) {
+  position: relative;
+  width: 40%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+header div:nth-child(2) i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--second-search-color);
+}
+
+header div:nth-child(2) input {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 3rem;
+  font-size: 1rem;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 2px 4px 0 var(--shadow-color);
+  background-color: var(--search-color);
+}
+
+header div:nth-child(2) input::placeholder {
+  color: var(--second-search-color);
+}
+
+header div:nth-child(3) {
+  gap: 2rem;
+}
+
+header div:nth-child(3) button {
+  padding: 0.5rem 2rem;
+  border-radius: 30px;
+  text-transform: capitalize;
+  border: 0;
+  outline: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 1px;
+}
+
+header div:nth-child(3) #logout {
+  background-color: inherit;
+  outline: 1px solid var(--main-color);
+  color: var(--main-color);
+}
+
+header div:nth-child(3) #logout:hover {
+  background-color: #fbfbfb;
+}
+
+/* HEADER STYLE ENDS */

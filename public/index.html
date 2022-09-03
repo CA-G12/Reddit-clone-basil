@@ -31,12 +31,30 @@
     </div>
   </header>
   <main>
-    <section id="trending">
+    <section id="trending" style="display: none;">
       <h3>Trending today</h3>
       <div class="container">
       </div>
     </section>
   </main>
+  <div class="layout">
+    <section id="signup">
+      <i class="fa-solid fa-xmark" id="cancel"></i>
+      <h1>signup</h1>
+      <div id="form">
+        <div>
+          <input type="text" placeholder="Enter Your First Name" name="first-name" />
+          <input type="text" placeholder="Enter Your last Name" name="last-name" />
+        </div>
+        <input type="text" placeholder="Enter Your Username" name="Username" />
+        <input type="email" placeholder="Enter Your Email" name="emaile" />
+        <input type="password" placeholder="Enter Your Password" name="password" />
+        <input type="password" placeholder="Confirm Your Password" name="confirm-password" />
+        <button id="signup-btn">signup</button>
+      </div>
+      <p>Do you have account? <span id="login">Login</span></p>
+    </section>
+  </div>
   <script src="./index.js"></script>
 </body>
 

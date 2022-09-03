@@ -47,12 +47,29 @@
           <input type="text" placeholder="Enter Your last Name" name="last-name" />
         </div>
         <input type="text" placeholder="Enter Your Username" name="Username" />
-        <input type="email" placeholder="Enter Your Email" name="emaile" />
+        <input type="email" placeholder="Enter Your Email" name="email" />
         <input type="password" placeholder="Enter Your Password" name="password" />
         <input type="password" placeholder="Confirm Your Password" name="confirm-password" />
         <button id="signup-btn">signup</button>
       </div>
-      <p>Do you have account? <span id="login">Login</span></p>
+      <p>Do you have account? <span id="login-span">Login</span></p>
+    </section>
+    <section id="login">
+      <i class="fa-solid fa-xmark" id="cancel"></i>
+      <h1>login</h1>
+      <div id="form">
+        <input type="email" placeholder="Enter Your Email" name="email" />
+        <input type="password" placeholder="Enter Your Password" name="password" />
+        <div>
+          <input type="checkbox" />
+          <label>Remmber me</label>
+        </div>
+        <div>
+          <p>Forget my <span>password</span> or <span>email</span></p>
+        </div>
+        <button id="login-btn">login</button>
+      </div>
+      <p>New to reddit? <span id="signup-span">Signup</span></p>
     </section>
   </div>
   <script src="./index.js"></script>

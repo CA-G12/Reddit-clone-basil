@@ -254,7 +254,7 @@ main {
   display: none;
 }
 
-.layout #signup {
+.layout section#signup {
   width: 45%;
   background-color: var(--second-color);
   display: flex;
@@ -267,27 +267,27 @@ main {
   display: none;
 }
 
-.layout #signup i {
+.layout section#signup i {
   position: absolute;
   right: 2rem;
   top: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1000;
 }
 
-.layout #signup i:hover {
+.layout section#signup i:hover {
   transform: scale(1.2);
 }
 
-.layout #signup h1 {
+.layout section#signup h1 {
   color: var(--main-color);
   text-transform: uppercase;
   font-size: 2.5rem;
   font-weight: 800;
 }
 
-.layout #signup #form {
+.layout section#signup #form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,7 +295,7 @@ main {
   gap: 1rem;
 }
 
-.layout #signup #form input {
+.layout section#signup #form input {
   width: 100%;
   padding: 0.5rem 1rem;
   border-radius: 30px;
@@ -305,14 +305,14 @@ main {
   font-weight: 500;
 }
 
-.layout #signup #form div {
+.layout section#signup #form div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
 
-.layout #signup #form button {
+.layout section#signup #form button {
   text-transform: uppercase;
   font-size: 1rem;
   margin-top: 2rem;
@@ -326,26 +326,127 @@ main {
   cursor: pointer;
 }
 
-.layout #signup #form button:hover {
+.layout section#signup #form button:hover {
   outline: 2px solid var(--main-color);
   background-color: inherit;
   color: var(--main-color);
 }
 
-.layout #signup p {
+.layout section#signup p {
   color: #333;
   font-size: 0.8rem;
 }
 
-.layout #signup p span {
+.layout section#signup p span {
   font-size: 1rem;
   color: #0685fa;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
-.layout #signup p span:hover {
+.layout section#signup p span:hover {
   text-decoration: underline;
 }
 
 /* SIGNUP STYLE ENDS */
+
+/* LOGIN STYLE START */
+
+.layout section#login {
+  width: 45%;
+  background-color: var(--second-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 10rem 4rem;
+  border-radius: 10px;
+  position: relative;
+  height: 70vh;
+  display: none;
+}
+
+.layout section#login i {
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.layout section#login i:hover {
+  transform: scale(1.2);
+}
+
+.layout section#login h1 {
+  color: var(--main-color);
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.layout section#login #form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.layout section#login #form > input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  border: 0;
+  outline: 1px solid var(--name-color);
+  color: var(--black);
+  font-weight: 500;
+}
+
+.layout section#login #form div {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  padding-left: 2rem;
+  gap: 0.5rem;
+}
+
+.layout section#login #form button {
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-top: 2rem;
+  padding: 0.6rem 3rem;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  transition: all 0.2s ease-in-out;
+  outline: 0;
+  border: 0;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.layout section#login #form button:hover {
+  outline: 2px solid var(--main-color);
+  background-color: inherit;
+  color: var(--main-color);
+}
+
+.layout section#login p {
+  color: #333;
+  font-size: 0.8rem;
+}
+
+.layout section#login p span {
+  font-size: 1rem;
+  color: #0685fa;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.layout section#login p span:hover {
+  text-decoration: underline;
+}
+
+/* LOGIN STYLE ENDS */

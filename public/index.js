@@ -162,5 +162,82 @@ signupBtn.addEventListener('click', () => {
 });
 
 // ======== login user ========
+loginBtn.addEventListener('click', () => {
+  const inputs = document.querySelectorAll('.layout > #login input');
+  const message = document.querySelector('.layout > #login #form p');
 
-loginBtn.addEventListener('click', () => {});
+  const userName = document.querySelector('.layout > #login #form #login-username');
+  const password = document.querySelector('.layout > #login #form #login-password');
+
+  inputs.forEach((e) => {
+    if (e.value === '') {
+      e.style.outline = '1px solid red';
+    } else {
+      e.style.outline = '1px solid green';
+    }
+  });
+  if (userName.value.length < 3 || userName.value.length > 30) {
+    userName.style.outline = '1px solid red';
+    message.textContent = 'Username Must Be Greater Than 3';
+    message.style.color = 'red';
+  } else if (password.value.length < 7 || password.value.length > 30) {
+    password.style.outline = '1px solid red';
+    message.textContent = 'Password Must Be Greater Than 7';
+    message.style.color = 'red';
+  } else {
+    message.textContent = '';
+    fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({
+        username: userName.value,
+        password: password.value,
+      }),
+    }).then((data) => data.json()).then((req) => {
+      if (req.error === 'Please double check your password and username') {
+        userName.style.outline = '1px solid red';
+        password.style.outline = '1px solid red';
+        message.textContent = req.error;
+        message.style.color = 'red';
+        messagePara.textContent = req.error;
+        messageSpan.classList.add('vanishspan');
+        messageHandler.classList.add('vanish');
+        messageHandler.style.backgroundColor = '#951b1b';
+        messageSpan.style.backgroundColor = '#ff1313';
+        setTimeout(() => {
+          messageHandler.classList.remove('vanish');
+          messageSpan.classList.remove('vanishspan');
+        }, 2000);
+      } else if (req.error) {
+        messagePara.textContent = req.error;
+        messageSpan.classList.add('vanishspan');
+        messageHandler.classList.add('vanish');
+        messageHandler.style.backgroundColor = '#951b1b';
+        messageSpan.style.backgroundColor = '#ff1313';
+        setTimeout(() => {
+          messageHandler.classList.remove('vanish');
+          messageSpan.classList.remove('vanishspan');
+        }, 2000);
+      } else if (req.message === 'success') {
+        messagePara.textContent = req.message;
+        messageSpan.classList.add('vanishspan');
+        messageHandler.classList.add('vanish');
+        messageHandler.style.backgroundColor = '#1b951b';
+        messageHandler.style.width = '350px';
+        messageSpan.style.backgroundColor = '#13ff13';
+        setTimeout(() => {
+          messageHandler.classList.remove('vanish');
+          messageSpan.classList.remove('vanishspan');
+        }, 2000);
+        loginLayout.style.display = 'none';
+        layout.style.display = 'none';
+        userName.value = '';
+        password.value = '';
+      } else if (req.message === 'loged in') {
+        layout.style.display = 'none';
+        loginLayout.style.display = 'none';
+        signupLayout.style.display = 'none';
+      }
+    });
+  }
+});

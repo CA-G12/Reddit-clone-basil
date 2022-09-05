@@ -451,3 +451,51 @@ main {
 }
 
 /* LOGIN STYLE ENDS */
+
+/* MESSAGE STYLE STARTS */
+
+.message {
+  position: fixed;
+  right: -100%;
+  padding: 1.2rem 1rem;
+  z-index: 1000;
+  transition: all 0.2s ease-in-out;
+  width: 350px;
+  top: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.message p {
+  color: #fff;
+}
+
+.message span {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 5px;
+  background-color: #13ff13;
+  z-index: 1000;
+  width: 100%;
+}
+
+.vanish {
+  animation: vanish 2s ease-in-out;
+  right: 3%;
+}
+
+.vanishspan {
+  animation: complete 2s ease-in-out;
+}
+
+@keyframes complete {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* MESSAGE STYLE ENDS */

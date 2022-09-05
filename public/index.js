@@ -19,6 +19,10 @@ const signupSpanBtn = document.querySelector(
 const loginBtn = document.querySelector('.layout > #login #login-btn');
 const signupBtn = document.querySelector('.layout > #signup #signup-btn');
 
+const messageHandler = document.querySelector('.message');
+const messagePara = document.querySelector('.message p');
+const messageSpan = document.querySelector('.message span');
+
 headerSignupBtn.addEventListener('click', () => {
   layout.style.display = 'flex';
   signupLayout.style.display = 'flex';
@@ -103,16 +107,56 @@ signupBtn.addEventListener('click', () => {
     confirmPassword.style.outline = '1px solid red';
     message.textContent = 'Confirm Password Must Equal Password';
     message.style.color = 'red';
-  } else if (imgUrl.value >= 0) {
+  } else {
     imgUrl.style.outline = '1px solid green';
     message.textContent = '';
-  } else {
     fetch('/signup', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
-        firstName, lastName, userName, email, password, confirmPassword, imgUrl,
+        firstName: firstName.value,
+        lastName: lastName.value,
+        userName: userName.value,
+        email: email.value,
+        password: password.value,
+        confirmPassword: confirmPassword.value,
+        imgUrl: imgUrl.value,
       }),
+    }).then((data) => data.json()).then((req) => {
+      if (req.error === 'Username already exists') {
+        userName.style.outline = '1px solid red';
+        message.textContent = req.error;
+        message.style.color = 'red';
+      } else if (req.error) {
+        messagePara.textContent = req.error;
+        messageSpan.classList.add('vanishspan');
+        messageHandler.classList.add('vanish');
+        messageHandler.style.backgroundColor = '#951b1b';
+        messageSpan.style.backgroundColor = '#ff1313';
+        setTimeout(() => {
+          messageHandler.classList.remove('vanish');
+          messageSpan.classList.remove('vanishspan');
+        }, 2000);
+      } else if (req.message) {
+        messagePara.textContent = req.message;
+        messageSpan.classList.add('vanishspan');
+        messageHandler.classList.add('vanish');
+        messageHandler.style.backgroundColor = '#1b951b';
+        messageSpan.style.backgroundColor = '#13ff13';
+        setTimeout(() => {
+          messageHandler.classList.remove('vanish');
+          messageSpan.classList.remove('vanishspan');
+        }, 2000);
+        loginLayout.style.display = 'flex';
+        signupLayout.style.display = 'none';
+        firstName.value = '';
+        lastName.value = '';
+        userName.value = '';
+        email.value = '';
+        password.value = '';
+        confirmPassword.value = '';
+        imgUrl.value = '';
+      }
     });
   }
 });

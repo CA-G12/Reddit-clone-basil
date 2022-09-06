@@ -15,7 +15,7 @@ CREATE TABLE users(
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   post TEXT,
-  post_date VARCHAR(200),
+  post_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   user_id INT,
   foreign key (user_id) references users(id)
 );

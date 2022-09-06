@@ -24,11 +24,46 @@
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="search" placeholder="Search Reddit" />
     </div>
-    <div>
-      <p>basil100</p>
-      <button id="logout">logout</button>
+    <div class="profile-cont">
+      <div id="drop">
+        <div id="profile-info">
+          <div class="status">
+            <img src="https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg">
+            <label style="display: block;"></label>
+          </div>
+          <p>basil100</p>
+        </div>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <ul id="drop-down" style="display: none;">
+        <li>
+          <div class="status-toggle">
+            <p>online status</p>
+            <div class="checked" style="justify-content: flex-end; background-color: #0c8ad9;">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="mode-toggle">
+            <p>dark mode</p>
+            <div class="checked" style="justify-content: flex-end; background-color: #0c8ad9;">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </li>
+        <li><i class="fa-regular fa-circle-user"></i>profile</li>
+        <li><i class="fa-solid fa-gear"></i>user settings</li>
+        <li><i class="fa-regular fa-square-plus"></i>create community</li>
+        <li><i class="fa-solid fa-rectangle-ad"></i>advertise on reddit</li>
+        <li><i class="fa-solid fa-coins"></i>coins</li>
+        <li>create avatar</li>
+        <li id="logout"><i class="fa-solid fa-arrow-right-to-bracket"></i>log out</li>
+        <p>© 2022 Reddit, Inc. All rights reserved</p>
+      </ul>
     </div>
   </header>
+  <main></main>
   <script src="./index.js"></script>
 </body>
 

@@ -194,7 +194,7 @@ loginBtn.addEventListener('click', () => {
         password: password.value,
       }),
     }).then((data) => data.json()).then((req) => {
-      if (req.error === 'Please double check your password and username') {
+      if (req.error === 'Incorrect username or password') {
         userName.style.outline = '1px solid red';
         password.style.outline = '1px solid red';
         message.textContent = req.error;

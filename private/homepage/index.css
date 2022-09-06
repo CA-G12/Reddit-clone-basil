@@ -5,6 +5,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  transition: all 0.2s ease-in-out;
 }
 
 :root {
@@ -42,13 +43,13 @@ header {
   box-shadow: 0 2px 4px 0 var(--shadow-color);
 }
 
-header div {
+header > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header div:nth-child(1) a {
+header > div:nth-child(1) a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,12 +58,12 @@ header div:nth-child(1) a {
   gap: 0.5rem;
 }
 
-header div:nth-child(1) i {
+header > div:nth-child(1) i {
   font-size: 2.2rem;
   color: var(--main-color);
 }
 
-header div:nth-child(1) h1 {
+header > div:nth-child(1) h1 {
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -71,14 +72,14 @@ header div:nth-child(1) span {
   color: var(--main-color);
 }
 
-header div:nth-child(2) {
+header > div:nth-child(2) {
   position: relative;
   width: 40%;
   border-radius: 5px;
   overflow: hidden;
 }
 
-header div:nth-child(2) i {
+header > div:nth-child(2) i {
   position: absolute;
   left: 1rem;
   top: 50%;
@@ -86,7 +87,7 @@ header div:nth-child(2) i {
   color: var(--second-search-color);
 }
 
-header div:nth-child(2) input {
+header > div:nth-child(2) input {
   width: 100%;
   padding: 0.5rem 1rem 0.5rem 3rem;
   font-size: 1rem;
@@ -96,35 +97,130 @@ header div:nth-child(2) input {
   background-color: var(--search-color);
 }
 
-header div:nth-child(2) input::placeholder {
+header > div:nth-child(2) input::placeholder {
   color: var(--second-search-color);
 }
 
-header div:nth-child(3) {
-  gap: 2rem;
+header div.profile-cont {
+  position: relative;
 }
 
-header div:nth-child(3) button {
-  padding: 0.5rem 2rem;
-  border-radius: 30px;
-  text-transform: capitalize;
-  border: 0;
-  outline: 0;
-  font-size: 0.9rem;
-  font-weight: 700;
+header div.profile-cont:hover {
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  letter-spacing: 1px;
 }
 
-header div:nth-child(3) #logout {
-  background-color: inherit;
-  outline: 1px solid var(--main-color);
-  color: var(--main-color);
+header div.profile-cont #drop {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
-header div:nth-child(3) #logout:hover {
-  background-color: #fbfbfb;
+header div#profile-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
+header div#profile-info p {
+  font-size: 0.9rem;
+}
+
+header div#profile-info div {
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+header div#profile-info div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+header div#profile-info div label {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 10px;
+  height: 10px;
+  background-color: #00c608;
+  border-radius: 50%;
+}
+
+header #drop-down {
+  position: absolute;
+  right: 0;
+  top: 130%;
+  width: 140%;
+  background-color: var(--second-color);
+  list-style: none;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  box-shadow: 0 2px 4px 0 rgb(132, 132, 132);
+}
+
+header #drop-down li:nth-child(1) {
+  border-top: 0.5px solid #dddddd;
+}
+
+header #drop-down li {
+  padding: 0.8rem 1rem;
+  width: 100%;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  border-bottom: 0.5px solid #dddddd;
+  color: var(--name-color);
+  display: flex;
+  align-items: center;
+}
+
+header #drop-down li:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+header #drop-down li > div {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header #drop-down li > div >* {
+  flex-shrink: 0;
+}
+
+header #drop-down .checked {
+  width: 40px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+  border-radius: 30px;
+  justify-content: flex-end;
+  transition: all 0.5s ease-in-out;
+}
+
+header #drop-down .checked .circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--second-color);
+}
+
+header #drop-down li i {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  opacity: 0.8;
+}
+
+header #drop-down > p {
+  font-size: 0.7rem;
+  color: var(--name-color);
+  padding: 1.5rem 1rem;
+  padding-bottom: 0;
+}
 /* HEADER STYLE ENDS */

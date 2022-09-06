@@ -18,12 +18,12 @@ const login = (req, res) => {
     .then((data) => {
       user = data.rows[0];
       if (!user) {
-        throw new GenericError(400, 'Please double check your password and username');
+        throw new GenericError(400, 'Incorrect username or password');
       }
       return compare(password, user.password);
     }).then((isPasswordMatched) => {
       if (!isPasswordMatched) {
-        throw new GenericError(400, 'Please double check your password and username');
+        throw new GenericError(400, 'Incorrect username or password');
       }
       return AuthHelpers.genearteToken({ id: user.id });
     })

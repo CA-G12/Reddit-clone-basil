@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { sign } = require('jsonwebtoken');
+const { sign, verify } = require('jsonwebtoken');
 
 const { SECRET_KEY } = process.env;
 
@@ -11,6 +11,18 @@ class AuthHelpers {
           rej(error);
         } else {
           res(decoded);
+        }
+      });
+    });
+  }
+
+  static checkPayload(payload) {
+    return new Promise((res, rej) => {
+      verify(payload, SECRET_KEY, (error, incoded) => {
+        if (error) {
+          rej(error);
+        } else {
+          res(incoded);
         }
       });
     });

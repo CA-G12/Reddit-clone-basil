@@ -5,6 +5,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  transition: all 0.2s ease-in-out;
 }
 
 :root {
@@ -150,6 +151,13 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+article {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
 }
 
 /* TRENDING STYLE STARTS */
@@ -451,6 +459,124 @@ main {
 }
 
 /* LOGIN STYLE ENDS */
+
+/* ASIDE STYLE STARTS */
+
+aside {
+  width: 35%;
+  height: 100%;
+}
+
+aside .top-news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--second-color);
+  padding-bottom: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+aside .top-news #head {
+  width: 100%;
+  position: relative;
+  height: 10vh;
+}
+
+aside .top-news #head .layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+}
+
+aside .top-news #head h2 {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  color: var(--second-color);
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+aside .top-news #head img {
+  height: 100%;
+  width: 100%;
+}
+
+aside .top-news > button {
+  color: var(--second-color);
+  background-color: var(--main-color);
+  outline: 0;
+  border: 0;
+  border-radius: 30px;
+  padding: 0.5rem 3rem;
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+aside .top-news ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+aside .top-news ul li {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-bottom: 0.5px solid var(--search-color);
+}
+
+aside .top-news ul li i.fa-chevron-up {
+  color: var(--arrow-color);
+  font-size: 1rem;
+}
+
+aside .top-news ul li i.fa-reddit {
+  color: var(--main-color);
+  font-size: 1.8rem;
+}
+
+aside .top-news ul li button {
+  color: var(--second-color);
+  background-color: var(--main-color);
+  outline: 0;
+  border: 0;
+  border-radius: 30px;
+  padding: 0.4rem 0.8rem;
+  text-transform: capitalize;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-left: 1.2rem;
+}
+
+aside .top-news button:hover {
+  color: var(--main-color);
+  background-color: inherit;
+  outline: 1px solid var(--main-color);
+}
+
+/* ASIDE STYLE ENDS */
+
+/* POSTS SECTION STYLE STARTS */
+
+#posts {
+  width: 60%;
+}
+
+/* POSTS SECTION STYLE ENDS */
 
 /* MESSAGE STYLE STARTS */
 

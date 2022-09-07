@@ -16,8 +16,9 @@ CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   post TEXT,
   post_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  post_img TEXT,
   user_id INT,
-  foreign key (user_id) references users(id)
+  foreign key (user_id) references users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments(

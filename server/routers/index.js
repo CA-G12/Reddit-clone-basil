@@ -9,7 +9,6 @@ router.post('/signup', signUp);
 router.post('/login', login);
 router.get('/posts', getAllPosts);
 router.post('/addpost', createPost);
-router.post('/addpost', createPost);
 router.delete('/delete/post/:id', deletePost);
 
 module.exports = router;

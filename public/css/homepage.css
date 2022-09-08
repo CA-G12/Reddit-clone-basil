@@ -42,6 +42,7 @@ header {
   padding: 0.5rem 4rem;
   background-color: var(--second-color);
   box-shadow: 0 2px 4px 0 var(--shadow-color);
+  z-index: 1000;
 }
 
 header > div {
@@ -159,6 +160,7 @@ header #drop-down {
   align-items: flex-start;
   padding-bottom: 1rem;
   box-shadow: 0 2px 4px 0 rgb(132, 132, 132);
+  z-index: 5000;
 }
 
 header #drop-down li:nth-child(1) {
@@ -326,6 +328,7 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .layout .layer {
@@ -456,12 +459,14 @@ aside .top-news {
   padding-bottom: 1rem;
   border-radius: 5px;
   overflow: hidden;
+  box-shadow: 0 2px 4px 0 var(--shadow-color);
 }
 
 aside .top-news #head {
   width: 100%;
   position: relative;
   height: 10vh;
+  z-index: 10;
 }
 
 aside .top-news #head .layer {

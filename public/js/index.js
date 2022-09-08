@@ -23,6 +23,24 @@ const messageHandler = document.querySelector('.message');
 const messagePara = document.querySelector('.message p');
 const messageSpan = document.querySelector('.message span');
 
+// ====================== Check login ===========================
+
+fetch('/login', {
+  method: 'POST',
+  headers: { 'Content-type': 'application/json' },
+  body: JSON.stringify({
+    username: '',
+    password: '',
+  }),
+}).then((res) => res.json()).then((data) => {
+  if (data.message === 'loged in') {
+    layout.style.display = 'none';
+    loginLayout.style.display = 'none';
+    signupLayout.style.display = 'none';
+    window.location.href = '/home';
+  }
+});
+
 headerSignupBtn.addEventListener('click', () => {
   layout.style.display = 'flex';
   signupLayout.style.display = 'flex';
@@ -228,6 +246,7 @@ loginBtn.addEventListener('click', () => {
         setTimeout(() => {
           messageHandler.classList.remove('vanish');
           messageSpan.classList.remove('vanishspan');
+          window.location.href = '/home';
         }, 2000);
         loginLayout.style.display = 'none';
         layout.style.display = 'none';
@@ -237,6 +256,7 @@ loginBtn.addEventListener('click', () => {
         layout.style.display = 'none';
         loginLayout.style.display = 'none';
         signupLayout.style.display = 'none';
+        window.location.href = '/home';
       }
     });
   }

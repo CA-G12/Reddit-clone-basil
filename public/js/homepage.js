@@ -85,6 +85,7 @@ postBtn.addEventListener('click', () => {
         messagePara.textContent = data.message;
         messageSpan.classList.add('vanishspan');
         messageHandler.classList.add('vanish');
+        messageHandler.style.width = '350px';
         messageHandler.style.backgroundColor = '#1b951b';
         messageSpan.style.backgroundColor = '#13ff13';
         setTimeout(() => {
@@ -100,4 +101,24 @@ postBtn.addEventListener('click', () => {
   } else {
     content.style.outline = '2px solid red';
   }
+});
+
+const logoutBtn = document.querySelector('header #drop-down #logout');
+
+logoutBtn.addEventListener('click', () => {
+  fetch('/logout').then((res) => res.json()).then((data) => {
+    if (data.message) {
+      messagePara.textContent = data.message;
+      messageSpan.classList.add('vanishspan');
+      messageHandler.classList.add('vanish');
+      messageHandler.style.width = '350px';
+      messageHandler.style.backgroundColor = '#1b951b';
+      messageSpan.style.backgroundColor = '#13ff13';
+      setTimeout(() => {
+        messageHandler.classList.remove('vanish');
+        messageSpan.classList.remove('vanishspan');
+        window.location.href = '/';
+      }, 2000);
+    }
+  });
 });

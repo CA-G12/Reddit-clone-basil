@@ -4,7 +4,6 @@ const main = document.querySelector('main');
 const statusToggle = document.querySelector('header #drop-down .status-toggle');
 const modeToggle = document.querySelector('header #drop-down .mode-toggle');
 const logout = document.querySelector('header #drop-down #logout');
-const status = document.querySelectorAll('.status label');
 
 const messageHandler = document.querySelector('.message');
 const messagePara = document.querySelector('.message p');
@@ -89,6 +88,11 @@ function handleDom(data, user) {
       userImg.src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
       userImg.alt = 'placeholder';
     }
+    if (user === obj.username) {
+      const statusLabel = document.createElement('label');
+      statusLabel.style.display = 'block';
+      statusDiv.appendChild(statusLabel);
+    }
     statusDiv.appendChild(userImg);
     userInfoDiv.appendChild(statusDiv);
     const postUsername = document.createElement('h3');
@@ -152,6 +156,8 @@ dropDownBtn.addEventListener('click', () => {
     dropDownMenu.style.display = 'none';
   }
 });
+
+const status = document.querySelectorAll('.status label');
 
 statusToggle.addEventListener('click', () => {
   const checkedBtn = document.querySelector('#drop-down .status-toggle .checked');

@@ -14,14 +14,18 @@ app.use(express.urlencoded());
 app.get('/home', (req, res) => {
   const isLoged = req.cookies.token;
   if (isLoged) {
-    res.status(200).sendFile(join(__dirname, '..', 'private', 'homepage', 'index.html'));
+    res.status(200).sendFile(join(__dirname, '..', 'private', 'homepage.html'));
   } else {
     res.redirect('/');
   }
 });
 
 app.get('/profile', (req, res) => {
-  res.status(200).sendFile(join(__dirname, '..', 'private', 'profile', 'index.html'));
+  res.status(200).sendFile(join(__dirname, '..', 'private', 'profile.html'));
+});
+
+app.get('/update', (req, res) => {
+  res.status(200).sendFile(join(__dirname, '..', 'private', 'setting.html'));
 });
 
 app.use(express.static(join(__dirname, '..', 'public')));

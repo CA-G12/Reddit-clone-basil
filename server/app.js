@@ -11,6 +11,19 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded());
 
+app.get('/home', (req, res) => {
+  const isLoged = req.cookies.token;
+  if (isLoged) {
+    res.status(200).sendFile(join(__dirname, '..', 'private', 'homepage', 'index.html'));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get('/profile', (req, res) => {
+  res.status(200).sendFile(join(__dirname, '..', 'private', 'profile', 'index.html'));
+});
+
 app.use(express.static(join(__dirname, '..', 'public')));
 app.use(router);
 app.set('port', process.env.PORT || 3000);

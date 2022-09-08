@@ -48,7 +48,7 @@ function deletePost(id) {
 function handleDom(data, user) {
   const postsContainer = document.querySelector('#posts');
   postsContainer.textContent = '';
-  data.forEach((obj) => {
+  data.reverse().forEach((obj) => {
     const post = document.createElement('div');
     if (user === obj.username) {
       const deleteBtn = document.createElement('i');

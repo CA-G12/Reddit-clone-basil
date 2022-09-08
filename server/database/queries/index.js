@@ -3,6 +3,7 @@ const { userPassword } = require('./login');
 const getPostsQuery = require('./getPostsQuery');
 const createPostQuery = require('./createPostQuery');
 const deletePostQuery = require('./deletePostQuery');
+const userDataQuery = require('./userDataQuery');
 
 module.exports = {
   signUpQuery,
@@ -11,4 +12,5 @@ module.exports = {
   getPostsQuery,
   createPostQuery,
   deletePostQuery,
+  userDataQuery,
 };

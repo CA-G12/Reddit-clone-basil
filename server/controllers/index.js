@@ -4,7 +4,8 @@ const getAllPosts = require('./getAllPosts');
 const createPost = require('./createPost');
 const deletePost = require('./deletePost');
 const logOut = require('./logout');
+const userData = require('./userData');
 
 module.exports = {
-  signUp, login, getAllPosts, createPost, deletePost, logOut,
+  signUp, login, getAllPosts, createPost, deletePost, logOut, userData,
 };

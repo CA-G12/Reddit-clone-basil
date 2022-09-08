@@ -41,6 +41,102 @@ fetch('/login', {
   }
 });
 
+// ====================== create posts ===========================
+
+function handleDom(data) {
+  const postsContainer = document.querySelector('#posts');
+  data.forEach((obj) => {
+    const post = document.createElement('div');
+    post.classList = 'post';
+
+    const voteDiv = document.createElement('div');
+    voteDiv.id = 'vote';
+    const votePlus = document.createElement('i');
+    votePlus.classList = 'fa-solid fa-chevron-up';
+    const voteNumber = document.createElement('p');
+    voteNumber.textContent = obj.likenum;
+    const voteMinus = document.createElement('i');
+    voteMinus.classList = 'fa-solid fa-chevron-down';
+    voteDiv.appendChild(votePlus);
+    voteDiv.appendChild(voteNumber);
+    voteDiv.appendChild(voteMinus);
+    post.appendChild(voteDiv);
+
+    votePlus.addEventListener('click', () => {
+      layout.style.display = 'flex';
+      loginLayout.style.display = 'flex';
+      signupLayout.style.display = 'none';
+    });
+
+    voteMinus.addEventListener('click', () => {
+      layout.style.display = 'flex';
+      loginLayout.style.display = 'flex';
+      signupLayout.style.display = 'none';
+    });
+
+    const container = document.createElement('div');
+    container.classList = 'container';
+
+    const userInfoDiv = document.createElement('div');
+    userInfoDiv.classList = 'user-info';
+    const statusDiv = document.createElement('div');
+    statusDiv.classList = 'status';
+    const userImg = document.createElement('img');
+    if (obj.userimg) {
+      userImg.src = obj.userimg;
+      userImg.alt = obj.username;
+    } else {
+      userImg.src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
+      userImg.alt = 'placeholder';
+    }
+    statusDiv.appendChild(userImg);
+    userInfoDiv.appendChild(statusDiv);
+    const postUsername = document.createElement('h3');
+    postUsername.textContent = obj.username;
+    const postDate = document.createElement('p');
+    const postDateTime = obj.postdate.split('T')[0];
+    postDate.textContent = `Posted by ${obj.username} ${postDateTime}`;
+    userInfoDiv.appendChild(postUsername);
+    userInfoDiv.appendChild(postDate);
+    container.appendChild(userInfoDiv);
+
+    const contentDiv = document.createElement('div');
+    contentDiv.classList = 'content';
+    const postContent = document.createElement('p');
+    postContent.textContent = obj.post;
+    contentDiv.appendChild(postContent);
+    container.appendChild(contentDiv);
+    if (obj.postimg) {
+      const postImgDiv = document.createElement('div');
+      postImgDiv.classList = 'img';
+      const postImg = document.createElement('img');
+      postImg.src = obj.postimg;
+      postImg.alt = obj.username;
+      postImgDiv.appendChild(postImg);
+      container.appendChild(postImgDiv);
+    }
+
+    const buttonsDiv = document.createElement('div');
+    buttonsDiv.classList = 'buttons';
+    const commentBtn = document.createElement('button');
+    commentBtn.id = 'comment';
+    commentBtn.innerHTML = '<i class="fa-regular fa-message"></i> Comments';
+    const saveBtn = document.createElement('button');
+    saveBtn.id = 'save';
+    saveBtn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Save';
+    buttonsDiv.appendChild(commentBtn);
+    buttonsDiv.appendChild(saveBtn);
+    container.appendChild(buttonsDiv);
+
+    post.appendChild(container);
+    postsContainer.appendChild(post);
+  });
+}
+
+fetch('/posts').then((res) => res.json()).then((data) => {
+  handleDom(data);
+});
+
 headerSignupBtn.addEventListener('click', () => {
   layout.style.display = 'flex';
   signupLayout.style.display = 'flex';

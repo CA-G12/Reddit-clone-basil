@@ -6,7 +6,8 @@ const deletePost = require('./deletePost');
 const logOut = require('./logout');
 const userData = require('./userData');
 const updateUserDate = require('./updateUserData');
+const userPosts = require('./userPosts');
 
 module.exports = {
-  signUp, login, getAllPosts, createPost, deletePost, logOut, userData, updateUserDate,
+  signUp, login, getAllPosts, createPost, deletePost, logOut, userData, updateUserDate, userPosts,
 };

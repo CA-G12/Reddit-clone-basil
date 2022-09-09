@@ -1,9 +1,9 @@
 const { signUpQuery, checkUserName } = require('./signUp');
 const { userPassword } = require('./login');
 const getPostsQuery = require('./getPostsQuery');
-const userDataQuery = require('./userDataQuery');
+const { addLikeQuery, removeLikeQuery, checkLikeQuery } = require('./like');
 const {
-  userPostsQuery, createPostQuery, deletePostQuery, updateUserDataQuery,
+  userPostsQuery, createPostQuery, deletePostQuery, updateUserDataQuery, userDataQuery,
 } = require('./user');
 
 module.exports = {
@@ -16,4 +16,7 @@ module.exports = {
   userDataQuery,
   updateUserDataQuery,
   userPostsQuery,
+  addLikeQuery,
+  removeLikeQuery,
+  checkLikeQuery,
 };

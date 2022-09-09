@@ -8,7 +8,33 @@ const messageHandler = document.querySelector('.message');
 const messagePara = document.querySelector('.message p');
 const messageSpan = document.querySelector('.message span');
 
-// ================= Handle posts ======================
+// ================ add like function ===================
+function addLike(id) {
+  fetch(`/like/add/${id}`, {
+    method: 'POST',
+  })
+    .then((res) => res.json())
+    .then((result) => {
+      if (result.message === 'success') {
+        createPosts();
+      }
+    });
+}
+// ============== remove like function ==================
+
+function downLike(id) {
+  fetch(`/like/down/${id}`, {
+    method: 'DELETE',
+  })
+    .then((res) => res.json())
+    .then((result) => {
+      if (result.message === 'success') {
+        createPosts();
+      }
+    });
+}
+
+// ================= get user data function ======================
 
 fetch('/user').then((res) => res.json()).then((data) => {
   if (data.userimg) {
@@ -28,16 +54,9 @@ fetch('/user').then((res) => res.json()).then((data) => {
   }
   document.querySelector('#drop #profile-info p').textContent = data.username;
   document.querySelector('#header .profile-info h2').textContent = `${data.first_name} ${data.last_name}`;
-  setTimeout(() => {
-    const profileInfo = document.querySelector('#header .profile-info');
-    if (profileInfo.style.display === 'none') {
-      profileInfo.style.display = 'flex';
-    } else {
-      profileInfo.style.display = 'none';
-    }
-    document.querySelector('#header').style.width = '100%';
-  }, 3000);
 });
+
+// ================ delete post funciton =====================
 
 function deletePost(id) {
   fetch(`/delete/post/${id}`, {
@@ -60,6 +79,8 @@ function deletePost(id) {
       }
     });
 }
+
+// ================== handle posts function =================
 
 function handleDom(data) {
   const postsContainer = document.querySelector('#posts');
@@ -87,6 +108,14 @@ function handleDom(data) {
     voteDiv.appendChild(voteNumber);
     voteDiv.appendChild(voteMinus);
     post.appendChild(voteDiv);
+
+    votePlus.addEventListener('click', () => {
+      addLike(obj.id);
+    });
+
+    voteMinus.addEventListener('click', () => {
+      downLike(obj.id);
+    });
 
     const container = document.createElement('div');
     container.classList = 'container';
@@ -288,7 +317,6 @@ logoutBtn.addEventListener('click', () => {
 // =============== go to profile page function ===============
 
 const profileBtn = document.querySelector('header #drop-down #profile');
-console.log(profileBtn);
 
 profileBtn.addEventListener('click', () => {
   window.location.href = '/profile';

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/homepage.css" />
+  <title>Reddit</title>
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="/">
+        <i class="fa-brands fa-reddit"></i>
+        <h1>redd<span>i</span>t</h1>
+      </a>
+    </div>
+    <div>
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" placeholder="Search Reddit" />
+    </div>
+    <div class="profile-cont">
+      <div id="drop">
+        <div id="profile-info">
+          <div class="status">
+            <img>
+            <label style="display: block;"></label>
+          </div>
+          <p></p>
+        </div>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <ul id="drop-down" style="display: none;">
+        <li>
+          <div class="status-toggle">
+            <p>online status</p>
+            <div class="checked" style="justify-content: flex-end; background-color: #0c8ad9;">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="mode-toggle">
+            <p>dark mode</p>
+            <div class="checked" style="justify-content: flex-end; background-color: #0c8ad9;">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </li>
+        <li id="profile"><i class="fa-regular fa-circle-user"></i>profile</li>
+        <li id="setting"><i class="fa-solid fa-gear"></i>user settings</li>
+        <li><i class="fa-regular fa-square-plus"></i>create community</li>
+        <li><i class="fa-solid fa-rectangle-ad"></i>advertise on reddit</li>
+        <li><i class="fa-solid fa-coins"></i>coins</li>
+        <li>create avatar</li>
+        <li id="logout"><i class="fa-solid fa-arrow-right-to-bracket"></i>log out</li>
+        <p>© 2022 Reddit, Inc. All rights reserved</p>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <article>
+      <section id="add-post">
+        <div class="status">
+          <img src="https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg">
+          <label style="display: block;"></label>
+        </div>
+        <input type="text" placeholder="Create Post" id="post-input">
+        <i class="fa-regular fa-image"></i>
+        <i class="fa-solid fa-link"></i>
+      </section>
+      <section id="filter">
+        <div id="hot">
+          <i class="fa-solid fa-fire-flame-simple"></i>
+          <p>hot</p>
+        </div>
+        <div id="new">
+          <i class="fa-solid fa-certificate"></i>
+          <p>new</p>
+        </div>
+        <div id="top">
+          <i class="fa-solid fa-sort"></i>
+          <p>top</p>
+        </div>
+      </section>
+      <section id="posts"></section>
+    </article>
+    <aside>
+      <div class="top-news">
+        <div id="head">
+          <img
+            src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
+            alt="sea" />
+          <div class="layer"></div>
+          <h2>top news communitis</h2>
+        </div>
+        <ul>
+          <li>
+            <label>1</label>
+            <i class="fa-solid fa-chevron-up"></i>
+            <i class="fa-brands fa-reddit"></i>
+            <p>r/worldnews</p>
+            <button>join</button>
+          </li>
+          <li>
+            <label>2</label>
+            <i class="fa-solid fa-chevron-up"></i>
+            <i class="fa-brands fa-reddit"></i>
+            <p>r/worldnews</p>
+            <button>join</button>
+          </li>
+          <li>
+            <label>3</label>
+            <i class="fa-solid fa-chevron-up"></i>
+            <i class="fa-brands fa-reddit"></i>
+            <p>r/worldnews</p>
+            <button>join</button>
+          </li>
+          <li>
+            <label>4</label>
+            <i class="fa-solid fa-chevron-up"></i>
+            <i class="fa-brands fa-reddit"></i>
+            <p>r/worldnews</p>
+            <button>join</button>
+          </li>
+          <li>
+            <label>5</label>
+            <i class="fa-solid fa-chevron-up"></i>
+            <i class="fa-brands fa-reddit"></i>
+            <p>r/worldnews</p>
+            <button>join</button>
+          </li>
+        </ul>
+        <button>view all</button>
+      </div>
+    </aside>
+  </main>
+  <div class="layout" style="display: none;">
+    <div class="layer"></div>
+    <div id="form">
+      <h1>add post</h1>
+      <textarea placeholder="Write Your Post Here" rows="15" cols="50"></textarea>
+      <input type="url" placeholder="Enter Your Image Post">
+      <button id="post">post</button>
+    </div>
+  </div>
+  <div class="message">
+    <p></p>
+    <span></span>
+  </div>
+  <script src="/js/homepage.js"></script>
+</body>
+
+</html>

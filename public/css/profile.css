@@ -244,7 +244,7 @@ article {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  padding: 2rem 16rem;
+  padding: 2rem 18rem;
   width: 100%;
   gap: 2rem;
 }
@@ -258,6 +258,7 @@ article {
   flex-wrap: wrap;
   padding: 2rem;
   border-radius: 100px;
+  width: 100%;
   outline: 5px solid var(--second-color);
 }
 
@@ -410,7 +411,6 @@ article {
 
 #posts #vote {
   background-color: var(--vote-color);
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

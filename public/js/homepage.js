@@ -3,7 +3,6 @@ const dropDownMenu = document.querySelector('header #drop-down');
 const main = document.querySelector('main');
 const statusToggle = document.querySelector('header #drop-down .status-toggle');
 const modeToggle = document.querySelector('header #drop-down .mode-toggle');
-const logout = document.querySelector('header #drop-down #logout');
 
 const messageHandler = document.querySelector('.message');
 const messagePara = document.querySelector('.message p');
@@ -16,8 +15,14 @@ let headerUsername = '';
 fetch('/user').then((res) => res.json()).then((data) => {
   if (data.userimg) {
     document.querySelector('#drop #profile-info img').src = data.userimg;
+    document.querySelector('#drop #profile-info img').alt = `${data.first_name} ${data.last_name}`;
+    document.querySelector('#add-post .status img').alt = `${data.first_name} ${data.last_name}`;
+    document.querySelector('#add-post .status img').src = data.userimg;
   } else {
     document.querySelector('#drop #profile-info img').src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
+    document.querySelector('#drop #profile-info img').alt = 'placeholder';
+    document.querySelector('#add-post .status img').src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
+    document.querySelector('#add-post .status img').alt = 'placeholder';
   }
   headerUsername = data.username;
   document.querySelector('#drop #profile-info p').textContent = data.username;

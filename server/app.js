@@ -25,7 +25,12 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/update', (req, res) => {
-  res.status(200).sendFile(join(__dirname, '..', 'private', 'setting.html'));
+  const isLoged = req.cookies.token;
+  if (isLoged) {
+    res.status(200).sendFile(join(__dirname, '..', 'private', 'setting.html'));
+  } else {
+    res.redirect('/');
+  }
 });
 
 app.use(express.static(join(__dirname, '..', 'public')));

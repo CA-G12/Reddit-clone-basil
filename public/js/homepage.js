@@ -145,6 +145,8 @@ function createPosts() {
 
 createPosts();
 
+// =================== drop down event funciton ==================
+
 main.addEventListener('click', () => {
   dropDownMenu.style.display = 'none';
 });
@@ -156,6 +158,8 @@ dropDownBtn.addEventListener('click', () => {
     dropDownMenu.style.display = 'none';
   }
 });
+
+// =================== change online status funciton ==================
 
 const status = document.querySelectorAll('.status label');
 
@@ -176,6 +180,8 @@ statusToggle.addEventListener('click', () => {
   }
 });
 
+// =================== change mode funciton ==================
+
 modeToggle.addEventListener('click', () => {
   const checkedBtn = document.querySelector('#drop-down .mode-toggle .checked');
   if (checkedBtn.style.justifyContent === 'flex-end') {
@@ -185,10 +191,6 @@ modeToggle.addEventListener('click', () => {
     checkedBtn.style.justifyContent = 'flex-end';
     checkedBtn.style.backgroundColor = '#0c8ad9';
   }
-});
-
-logout.addEventListener('click', () => {
-  fetch('/logout');
 });
 
 // ============ Create post functions ===================
@@ -205,6 +207,8 @@ postInput.addEventListener('click', () => {
 layer.addEventListener('click', () => {
   layout.style.display = 'none';
 });
+
+// ============== add new post function =======================
 
 postBtn.addEventListener('click', () => {
   const content = document.querySelector('.layout #form textarea');
@@ -241,6 +245,8 @@ postBtn.addEventListener('click', () => {
   }
 });
 
+// =================== logout function ===================
+
 const logoutBtn = document.querySelector('header #drop-down #logout');
 
 logoutBtn.addEventListener('click', () => {
@@ -259,4 +265,21 @@ logoutBtn.addEventListener('click', () => {
       }, 2000);
     }
   });
+});
+
+// =============== go to profile page function ===============
+
+const profileBtn = document.querySelector('header #drop-down #profile');
+console.log(profileBtn);
+
+profileBtn.addEventListener('click', () => {
+  window.location.href = '/profile';
+});
+
+// =============== go to setting page function ===============
+
+const settingBtn = document.querySelector('header #drop-down #setting');
+
+settingBtn.addEventListener('click', () => {
+  window.location.href = '/update';
 });

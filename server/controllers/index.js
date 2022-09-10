@@ -1,7 +1,7 @@
 const { addComment, getComments, deleteComment } = require('./comment');
 
 const {
-  login, signUp, logOut, updateUserDate, userData,
+  login, signUp, logOut, updateUserDate, userData, userStatus,
 } = require('./user');
 
 const {
@@ -25,4 +25,5 @@ module.exports = {
   addComment,
   getComments,
   deleteComment,
+  userStatus,
 };

@@ -31,7 +31,7 @@ router.get('/logout', logOut);
 router.post('/like/add/:id', addLike);
 router.delete('/like/down/:id', removeLike);
 router.post('/add/comment', addComment);
-router.get('/comments', getComments);
+router.get('/comments/:id', getComments);
 router.delete('/comment/:id', deleteComment);
 
 module.exports = router;

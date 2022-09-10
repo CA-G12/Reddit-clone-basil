@@ -1,6 +1,6 @@
 # Reddit-clone-basil
 
-# Click [HERE](https://reddidnt-sara.herokuapp.com/) to show live
+# Click [HERE](https://redditbasil.herokuapp.com/) to show live
 
 ## Description:
 

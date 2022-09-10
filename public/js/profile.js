@@ -8,6 +8,8 @@ const messageHandler = document.querySelector('.message');
 const messagePara = document.querySelector('.message p');
 const messageSpan = document.querySelector('.message span');
 
+let headerUsername = '';
+
 // ================ add like function ===================
 function addLike(id) {
   fetch(`/like/add/${id}`, {
@@ -52,6 +54,7 @@ fetch('/user').then((res) => res.json()).then((data) => {
     document.querySelector('#add-post .status img').src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
     document.querySelector('#add-post .status img').alt = 'placeholder';
   }
+  headerUsername = data.username;
   document.querySelector('#drop #profile-info p').textContent = data.username;
   document.querySelector('#header .profile-info h2').textContent = `${data.first_name} ${data.last_name}`;
 });
@@ -82,18 +85,19 @@ function deletePost(id) {
 
 // ================== handle posts function =================
 
-function handleDom(data) {
+function handleDom(data, user) {
   const postsContainer = document.querySelector('#posts');
-  document.querySelector('#header .profile-info p').textContent = `post: ${data.length}`;
   postsContainer.textContent = '';
   data.reverse().forEach((obj) => {
     const post = document.createElement('div');
-    const deleteBtn = document.createElement('i');
-    deleteBtn.classList = 'fa-solid fa-xmark';
-    post.appendChild(deleteBtn);
-    deleteBtn.addEventListener('click', () => {
-      deletePost(obj.id);
-    });
+    if (user === obj.username) {
+      const deleteBtn = document.createElement('i');
+      deleteBtn.classList = 'fa-solid fa-xmark';
+      post.appendChild(deleteBtn);
+      deleteBtn.addEventListener('click', () => {
+        deletePost(obj.id);
+      });
+    }
     post.classList = 'post';
 
     const voteDiv = document.createElement('div');
@@ -132,9 +136,11 @@ function handleDom(data) {
       userImg.src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
       userImg.alt = 'placeholder';
     }
-    const statusLabel = document.createElement('label');
-    statusLabel.style.display = 'block';
-    statusDiv.appendChild(statusLabel);
+    if (user === obj.username) {
+      const statusLabel = document.createElement('label');
+      statusLabel.style.display = 'block';
+      statusDiv.appendChild(statusLabel);
+    }
     statusDiv.appendChild(userImg);
     userInfoDiv.appendChild(statusDiv);
     const postUsername = document.createElement('h3');
@@ -174,6 +180,154 @@ function handleDom(data) {
     buttonsDiv.appendChild(saveBtn);
     container.appendChild(buttonsDiv);
 
+    const commentDivContainer = document.createElement('div');
+    commentDivContainer.classList = 'comments';
+    commentDivContainer.style.display = 'none';
+    container.appendChild(commentDivContainer);
+    const commentFeild = document.createElement('div');
+    commentFeild.classList = 'comment-feild';
+    const commentInput = document.createElement('input');
+    commentInput.type = 'text';
+    commentInput.placeholder = 'Enter Your Comment Here';
+    const commentSubmetBtn = document.createElement('button');
+    commentSubmetBtn.textContent = 'comment';
+    commentFeild.appendChild(commentInput);
+    commentFeild.appendChild(commentSubmetBtn);
+    commentDivContainer.appendChild(commentFeild);
+
+    const commentContainer = document.createElement('div');
+    commentContainer.classList = 'comment-container';
+    commentContainer.style.display = 'none';
+    commentDivContainer.appendChild(commentContainer);
+
+    commentBtn.addEventListener('click', () => {
+      if (commentDivContainer.style.display === 'flex') {
+        commentDivContainer.style.display = 'none';
+        commentContainer.style.display = 'none';
+        commentContainer.textContent = '';
+      } else {
+        commentDivContainer.style.display = 'flex';
+        commentContainer.style.display = 'flex';
+        fetch(`/comments/${obj.id}`).then((res) => res.json()).then((result) => {
+          result.forEach((ele) => {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList = 'comment';
+            commentContainer.appendChild(commentDiv);
+
+            const imgNameDiv = document.createElement('div');
+            imgNameDiv.classList = 'information';
+            const imgDiv = document.createElement('div');
+            imgDiv.classList = 'user-img';
+            const img = document.createElement('img');
+            if (user === ele.username) {
+              const deleteCommentBtn = document.createElement('i');
+              deleteCommentBtn.classList = 'fa-solid fa-trash';
+              commentDiv.appendChild(deleteCommentBtn);
+              deleteCommentBtn.addEventListener('click', () => {
+                console.log(ele);
+                fetch(`/comment/${ele.commentid}`, {
+                  method: 'DELETE',
+                }).then((res) => res.json()).then((final) => {
+                  if (final.message) {
+                    createPosts();
+                    messagePara.textContent = final.message;
+                    messageSpan.classList.add('vanishspan');
+                    messageHandler.classList.add('vanish');
+                    messageHandler.style.width = '350px';
+                    messageHandler.style.backgroundColor = '#1b951b';
+                    messageSpan.style.backgroundColor = '#13ff13';
+                    setTimeout(() => {
+                      messageHandler.classList.remove('vanish');
+                      messageSpan.classList.remove('vanishspan');
+                    }, 2000);
+                  } else {
+                    createPosts();
+                    messagePara.textContent = final.error;
+                    messageSpan.classList.add('vanishspan');
+                    messageHandler.classList.add('vanish');
+                    messageHandler.style.width = '350px';
+                    messageHandler.style.backgroundColor = '#951b1b';
+                    messageSpan.style.backgroundColor = '#ff1313';
+                    setTimeout(() => {
+                      messageHandler.classList.remove('vanish');
+                      messageSpan.classList.remove('vanishspan');
+                    }, 2000);
+                  }
+                });
+              });
+            }
+            if (ele.userImg) {
+              img.src = ele.userImg;
+              img.alt = ele.username;
+            } else {
+              img.src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
+              img.alt = 'placeholder';
+            }
+            const userH2 = document.createElement('h2');
+            userH2.textContent = ele.username;
+            imgDiv.appendChild(img);
+            imgNameDiv.appendChild(imgDiv);
+            imgNameDiv.appendChild(userH2);
+            commentDiv.appendChild(imgNameDiv);
+            const contentPara = document.createElement('p');
+            contentPara.textContent = ele.content;
+            commentDiv.appendChild(contentPara);
+          });
+        });
+      }
+    });
+
+    commentSubmetBtn.addEventListener('click', () => {
+      if (commentInput.value !== '') {
+        fetch('/add/comment', {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({
+            content: commentInput.value,
+            postId: obj.id,
+          }),
+        }).then((res) => res.json()).then((result) => {
+          if (result.message === 'comment added') {
+            createPosts();
+            commentInput.value = '';
+            messagePara.textContent = result.message;
+            messageSpan.classList.add('vanishspan');
+            messageHandler.classList.add('vanish');
+            messageHandler.style.width = '350px';
+            messageHandler.style.backgroundColor = '#1b951b';
+            messageSpan.style.backgroundColor = '#13ff13';
+            setTimeout(() => {
+              messageHandler.classList.remove('vanish');
+              messageSpan.classList.remove('vanishspan');
+            }, 2000);
+          } else if (result.error) {
+            messagePara.textContent = result.error;
+            messageSpan.classList.add('vanishspan');
+            messageHandler.classList.add('vanish');
+            messageHandler.style.width = '350px';
+            messageHandler.style.backgroundColor = '#951b1b';
+            messageSpan.style.backgroundColor = '#ff1313';
+            setTimeout(() => {
+              messageHandler.classList.remove('vanish');
+              messageSpan.classList.remove('vanishspan');
+            }, 2000);
+          }
+        });
+      } else {
+        commentInput.style.outline = '1px solid red';
+        messagePara.textContent = 'No Comment To Add';
+        messageSpan.classList.add('vanishspan');
+        messageHandler.classList.add('vanish');
+        messageHandler.style.width = '350px';
+        messageHandler.style.backgroundColor = '#951b1b';
+        messageSpan.style.backgroundColor = '#ff1313';
+        setTimeout(() => {
+          messageHandler.classList.remove('vanish');
+          messageSpan.classList.remove('vanishspan');
+        }, 2000);
+      }
+    });
+
     post.appendChild(container);
     postsContainer.appendChild(post);
   });
@@ -185,7 +339,7 @@ function createPosts() {
       const postsContainer = document.querySelector('#posts');
       postsContainer.textContent = 'No Post Result!';
     } else {
-      handleDom(data);
+      handleDom(data, headerUsername);
     }
   });
 }

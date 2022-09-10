@@ -154,12 +154,14 @@ main {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+  gap: 2rem;
 }
 
 article {
   display: flex;
   gap: 2rem;
   width: 100%;
+  justify-content: space-between;
 }
 
 /* TRENDING STYLE STARTS */
@@ -184,7 +186,6 @@ article {
 }
 
 #trending .container .card {
-  background-image: url("./img/image\ 1.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -199,6 +200,22 @@ article {
   gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 10px;
+}
+
+#trending .container .card:nth-child(1) {
+  background-image: url("https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000");
+}
+
+#trending .container .card:nth-child(2) {
+  background-image: url("https://www.aljazeera.com/wp-content/uploads/2022/09/AP22245026536485.jpg?resize=770%2C513");
+}
+
+#trending .container .card:nth-child(3) {
+  background-image: url("https://cdn.vox-cdn.com/thumbor/rjENJ8GaupFzMngVC9iLlhaA68w=/0x0:4096x2304/920x613/filters:focal(1721x825:2375x1479):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/71346516/FcPeEBoagAAcLci.5.jpeg");
+}
+
+#trending .container .card:nth-child(4) {
+  background-image: url("https://resources.premierleague.com/premierleague/photo/2022/08/07/888bc214-248d-4614-8ba8-1463b9f52dde/PL30-board-ball-and-Trophy-at-PL-launch.jpg");
 }
 
 #trending .container .card span {

@@ -128,10 +128,84 @@ function handleDom(data) {
     buttonsDiv.appendChild(saveBtn);
     container.appendChild(buttonsDiv);
 
+    const commentDivContainer = document.createElement('div');
+    commentDivContainer.classList = 'comments';
+    commentDivContainer.style.display = 'none';
+    container.appendChild(commentDivContainer);
+    const commentFeild = document.createElement('div');
+    commentFeild.classList = 'comment-feild';
+    const commentInput = document.createElement('input');
+    commentInput.type = 'text';
+    commentInput.placeholder = 'Enter Your Comment Here';
+    const commentSubmetBtn = document.createElement('button');
+    commentSubmetBtn.textContent = 'comment';
+    commentFeild.appendChild(commentInput);
+    commentFeild.appendChild(commentSubmetBtn);
+    commentDivContainer.appendChild(commentFeild);
+    commentSubmetBtn.addEventListener('click', () => {
+      layout.style.display = 'flex';
+      loginLayout.style.display = 'flex';
+      signupLayout.style.display = 'none';
+    });
+
+    const commentContainer = document.createElement('div');
+    commentContainer.classList = 'comment-container';
+    commentContainer.style.display = 'none';
+    commentDivContainer.appendChild(commentContainer);
+
+    commentBtn.addEventListener('click', () => {
+      if (commentDivContainer.style.display === 'flex') {
+        commentDivContainer.style.display = 'none';
+        commentContainer.style.display = 'none';
+        commentContainer.textContent = '';
+      } else {
+        commentDivContainer.style.display = 'flex';
+        commentContainer.style.display = 'flex';
+        fetch(`/comments/${obj.id}`).then((res) => res.json()).then((result) => {
+          result.forEach((ele) => {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList = 'comment';
+            commentContainer.appendChild(commentDiv);
+
+            const imgNameDiv = document.createElement('div');
+            imgNameDiv.classList = 'information';
+            const imgDiv = document.createElement('div');
+            imgDiv.classList = 'user-img';
+            const img = document.createElement('img');
+            if (ele.userImg) {
+              img.src = ele.userImg;
+              img.alt = ele.username;
+            } else {
+              img.src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
+              img.alt = 'placeholder';
+            }
+            const userH2 = document.createElement('h2');
+            userH2.textContent = ele.username;
+            imgDiv.appendChild(img);
+            imgNameDiv.appendChild(imgDiv);
+            imgNameDiv.appendChild(userH2);
+            commentDiv.appendChild(imgNameDiv);
+            const contentPara = document.createElement('p');
+            contentPara.textContent = ele.content;
+            commentDiv.appendChild(contentPara);
+          });
+        });
+      }
+    });
+
     post.appendChild(container);
     postsContainer.appendChild(post);
   });
 }
+
+// ===================== handle comments function ==================
+
+// function handleComments(id, container) {
+//   console.log(container);
+//   return container;
+// }
+
+// =================== create posts fetch ============================
 
 fetch('/posts').then((res) => res.json()).then((data) => {
   handleDom(data);

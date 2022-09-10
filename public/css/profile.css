@@ -43,6 +43,7 @@ header {
   background-color: var(--second-color);
   box-shadow: 0 2px 4px 0 var(--shadow-color);
   z-index: 1000;
+  position: fixed;
 }
 
 header > div {
@@ -230,7 +231,7 @@ header #drop-down > p {
 /* HEADER STYLE ENDS */
 
 main {
-  padding: 2rem;
+  padding: 5rem 2rem;
   width: 100%;
   height: 100%;
   display: flex;

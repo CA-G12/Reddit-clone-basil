@@ -721,7 +721,7 @@ article {
   position: fixed;
   right: -100%;
   padding: 1.2rem 1rem;
-  z-index: 1000;
+  z-index: 10000;
   transition: all 0.2s ease-in-out;
   width: auto;
   top: 1rem;

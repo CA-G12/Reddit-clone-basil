@@ -57,7 +57,7 @@ fetch('/user').then((res) => res.json()).then((data) => {
 // ================ delete post funciton ================
 
 function deletePost(id) {
-  fetch(`/delete/post/${id}`, {
+  fetch(`/post/${id}`, {
     method: 'DELETE',
   })
     .then((res) => res.json())

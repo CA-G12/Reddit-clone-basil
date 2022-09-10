@@ -1,5 +1,5 @@
-const { addLikeQuery, checkLikeQuery } = require('../database/queries');
-const { AuthHelpers, GenericError } = require('../helpers');
+const { addLikeQuery, checkLikeQuery } = require('../../database/queries');
+const { AuthHelpers, GenericError } = require('../../helpers');
 
 const addLike = (req, res, next) => {
   const isLoged = req.cookies.token;

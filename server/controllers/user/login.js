@@ -1,9 +1,9 @@
 require('dotenv').config();
 const { compare } = require('bcrypt');
-const { loginValidationSchema } = require('../validation');
-const { validate } = require('../validation');
-const { GenericError, AuthHelpers } = require('../helpers');
-const { userPassword } = require('../database/queries');
+const { loginValidationSchema } = require('../../validation');
+const { validate } = require('../../validation');
+const { GenericError, AuthHelpers } = require('../../helpers');
+const { userPassword } = require('../../database/queries');
 
 const login = (req, res) => {
   const isToken = req.cookies.token;
@@ -30,4 +30,5 @@ const login = (req, res) => {
     .then((jwt) => res.cookie('token', jwt, { httpOnly: true }).json({ message: 'success' }))
     .catch((error) => res.status(error.error || 500).json({ error: error.msg || 'somthing went wrong' }));
 };
+
 module.exports = login;

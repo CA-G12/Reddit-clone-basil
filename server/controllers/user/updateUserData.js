@@ -1,6 +1,11 @@
-const { userDataQuery, checkUserName, updateUserDataQuery } = require('../database/queries');
-const { updateValidationSchema, validate } = require('../validation');
-const { GenericError, AuthHelpers } = require('../helpers');
+const {
+  userDataQuery,
+  checkUserName,
+  updateUserDataQuery,
+} = require('../../database/queries');
+
+const { updateValidationSchema, validate } = require('../../validation');
+const { GenericError, AuthHelpers } = require('../../helpers');
 
 const updateUserDate = (req, res, next) => {
   const isLoged = req.cookies.token;

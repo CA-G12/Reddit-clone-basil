@@ -1,5 +1,5 @@
-const { deletePostQuery } = require('../database/queries');
-const { AuthHelpers } = require('../helpers');
+const { deletePostQuery } = require('../../database/queries');
+const { AuthHelpers } = require('../../helpers');
 
 const deletePost = (req, res, next) => {
   const { id } = req.params;

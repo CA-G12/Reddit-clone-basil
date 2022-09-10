@@ -1,14 +1,14 @@
-const signUp = require('./signUp');
-const login = require('./login');
-const getAllPosts = require('./getAllPosts');
-const createPost = require('./createPost');
-const deletePost = require('./deletePost');
-const logOut = require('./logout');
-const userData = require('./userData');
-const updateUserDate = require('./updateUserData');
-const userPosts = require('./userPosts');
-const addLike = require('./addLike');
-const removeLike = require('./removeLike');
+const { addComment, getComments, deleteComment } = require('./comment');
+
+const {
+  login, signUp, logOut, updateUserDate, userData,
+} = require('./user');
+
+const {
+  getAllPosts, createPost, deletePost, userPosts,
+} = require('./post');
+
+const { addLike, removeLike } = require('./like');
 
 module.exports = {
   signUp,
@@ -22,4 +22,7 @@ module.exports = {
   userPosts,
   addLike,
   removeLike,
+  addComment,
+  getComments,
+  deleteComment,
 };

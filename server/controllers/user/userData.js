@@ -1,5 +1,5 @@
-const { userDataQuery } = require('../database/queries');
-const { AuthHelpers } = require('../helpers');
+const { userDataQuery } = require('../../database/queries');
+const { AuthHelpers } = require('../../helpers');
 
 const userData = (req, res, next) => {
   const { token } = req.cookies;

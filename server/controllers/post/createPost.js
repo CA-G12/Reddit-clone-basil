@@ -1,5 +1,5 @@
-const { createPostQuery } = require('../database/queries');
-const { AuthHelpers } = require('../helpers');
+const { createPostQuery } = require('../../database/queries');
+const { AuthHelpers } = require('../../helpers');
 
 const createPost = (req, res, next) => {
   const { content, postImg } = req.body;

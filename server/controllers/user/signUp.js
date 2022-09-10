@@ -1,8 +1,8 @@
 const { hash } = require('bcrypt');
-const { signUpValidationSchema } = require('../validation');
-const { validate } = require('../validation');
-const { GenericError } = require('../helpers');
-const { signUpQuery, checkUserName } = require('../database/queries');
+const { signUpValidationSchema } = require('../../validation');
+const { validate } = require('../../validation');
+const { GenericError } = require('../../helpers');
+const { signUpQuery, checkUserName } = require('../../database/queries');
 
 const signUp = (req, res) => {
   const {

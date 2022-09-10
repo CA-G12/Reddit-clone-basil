@@ -8,6 +8,7 @@ CREATE TABLE users(
   last_name VARCHAR(50) NOT NULL,
   username VARCHAR(100) NOT NULL UNIQUE,
   email VARCHAR(250) NOT NULL,
+  user_status VARCHAR(100) NOT NULL,
   img_url TEXT,
   password TEXT NOT NULL
 );

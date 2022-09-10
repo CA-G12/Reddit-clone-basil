@@ -264,7 +264,7 @@ aside {
 
 #add-post div {
   width: 40px;
-  height: 35px;
+  height: 40px;
   position: relative;
   flex-shrink: 0;
 }
@@ -410,6 +410,7 @@ aside {
   width: 40px;
   height: 40px;
   position: relative;
+  flex-shrink: 0;
 }
 
 #posts .post .container .user-info div img {
@@ -553,6 +554,17 @@ aside {
   border-radius: 50%;
   flex-shrink: 0;
   display: flex;
+  position: relative;
+}
+
+#posts .post .container .comments .comment .user-img label {
+  position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #00c608;
+    border-radius: 50%;
 }
 
 #posts .post .container .comments .comment .user-img img {

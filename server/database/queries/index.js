@@ -4,7 +4,12 @@ const getPostsQuery = require('./getPostsQuery');
 const { addLikeQuery, removeLikeQuery, checkLikeQuery } = require('./like');
 const { addCommentQuery, getCommentsQuery, deleteCommentQuery } = require('./comment');
 const {
-  userPostsQuery, createPostQuery, deletePostQuery, updateUserDataQuery, userDataQuery,
+  userPostsQuery,
+  createPostQuery,
+  deletePostQuery,
+  updateUserDataQuery,
+  userDataQuery,
+  userStatusQuery,
 } = require('./user');
 
 module.exports = {
@@ -23,4 +28,5 @@ module.exports = {
   addCommentQuery,
   getCommentsQuery,
   deleteCommentQuery,
+  userStatusQuery,
 };

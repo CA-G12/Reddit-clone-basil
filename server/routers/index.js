@@ -15,6 +15,7 @@ const {
   addComment,
   getComments,
   deleteComment,
+  userStatus,
 } = require('../controllers');
 
 const router = Router();
@@ -33,5 +34,6 @@ router.delete('/like/down/:id', removeLike);
 router.post('/add/comment', addComment);
 router.get('/comments/:id', getComments);
 router.delete('/comment/:id', deleteComment);
+router.post('/status', userStatus);
 
 module.exports = router;

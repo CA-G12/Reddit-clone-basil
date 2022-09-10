@@ -8,8 +8,10 @@ const messageHandler = document.querySelector('.message');
 const messagePara = document.querySelector('.message p');
 const messageSpan = document.querySelector('.message span');
 
-let headerUsername = '';
+const checkedBtn = document.querySelector('#drop-down .status-toggle .checked');
 
+let headerUsername = '';
+let userStatus = '';
 // ================ add like function ===================
 function addLike(id) {
   fetch(`/like/add/${id}`, {
@@ -50,6 +52,21 @@ fetch('/user').then((res) => res.json()).then((data) => {
     document.querySelector('#add-post .status img').src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
     document.querySelector('#add-post .status img').alt = 'placeholder';
   }
+
+  if (data.userstatus === 'online') {
+    checkedBtn.style.justifyContent = 'flex-end';
+    checkedBtn.style.backgroundColor = '#0c8ad9';
+    status.forEach((ele) => {
+      ele.style.display = 'block';
+    });
+  } else if (data.userstatus === 'offline') {
+    checkedBtn.style.justifyContent = 'flex-start';
+    checkedBtn.style.backgroundColor = '#818181';
+    status.forEach((ele) => {
+      ele.style.display = 'none';
+    });
+  }
+  userStatus = data.userstatus;
   headerUsername = data.username;
   document.querySelector('#drop #profile-info p').textContent = data.username;
 });
@@ -133,7 +150,11 @@ function handleDom(data, user) {
     }
     if (user === obj.username) {
       const statusLabel = document.createElement('label');
-      statusLabel.style.display = 'block';
+      if (userStatus === 'online') {
+        statusLabel.style.display = 'block';
+      } else if (userStatus === 'offline') {
+        statusLabel.style.display = 'none';
+      }
       statusDiv.appendChild(statusLabel);
     }
     statusDiv.appendChild(userImg);
@@ -213,13 +234,19 @@ function handleDom(data, user) {
             imgNameDiv.classList = 'information';
             const imgDiv = document.createElement('div');
             imgDiv.classList = 'user-img';
+            const statusLabel = document.createElement('label');
+            imgDiv.appendChild(statusLabel);
+            if (userStatus === 'online') {
+              statusLabel.style.display = 'block';
+            } else if (userStatus === 'offline') {
+              statusLabel.style.display = 'none';
+            }
             const img = document.createElement('img');
             if (user === ele.username) {
               const deleteCommentBtn = document.createElement('i');
               deleteCommentBtn.classList = 'fa-solid fa-trash';
               commentDiv.appendChild(deleteCommentBtn);
               deleteCommentBtn.addEventListener('click', () => {
-                console.log(ele);
                 fetch(`/comment/${ele.commentid}`, {
                   method: 'DELETE',
                 }).then((res) => res.json()).then((final) => {
@@ -251,8 +278,8 @@ function handleDom(data, user) {
                 });
               });
             }
-            if (ele.userImg) {
-              img.src = ele.userImg;
+            if (ele.userimg) {
+              img.src = ele.userimg;
               img.alt = ele.username;
             } else {
               img.src = 'https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg';
@@ -357,19 +384,34 @@ dropDownBtn.addEventListener('click', () => {
 const status = document.querySelectorAll('.status label');
 
 statusToggle.addEventListener('click', () => {
-  const checkedBtn = document.querySelector('#drop-down .status-toggle .checked');
   if (checkedBtn.style.justifyContent === 'flex-end') {
-    checkedBtn.style.justifyContent = 'flex-start';
-    checkedBtn.style.backgroundColor = '#818181';
-    status.forEach((ele) => {
-      ele.style.display = 'none';
+    fetch('/status', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({
+        status: 'offline',
+      }),
+    }).then((res) => res.json()).then((stat) => {
+      if (stat.message === 'status update') {
+        checkedBtn.style.justifyContent = 'flex-start';
+        checkedBtn.style.backgroundColor = '#818181';
+        window.location.reload();
+      }
     });
   } else {
-    status.forEach((ele) => {
-      ele.style.display = 'block';
+    fetch('/status', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({
+        status: 'online',
+      }),
+    }).then((res) => res.json()).then((stat) => {
+      if (stat.message === 'status update') {
+        checkedBtn.style.justifyContent = 'flex-end';
+        checkedBtn.style.backgroundColor = '#0c8ad9';
+        window.location.reload();
+      }
     });
-    checkedBtn.style.justifyContent = 'flex-end';
-    checkedBtn.style.backgroundColor = '#0c8ad9';
   }
 });
 

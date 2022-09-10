@@ -279,6 +279,7 @@ article {
   justify-content: center;
   align-items: center;
   display: none;
+  z-index: 1000;
 }
 
 .layout section#signup {

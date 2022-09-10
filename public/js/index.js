@@ -308,6 +308,7 @@ signupBtn.addEventListener('click', () => {
         email: email.value,
         password: password.value,
         confirmPassword: confirmPassword.value,
+        status: 'online',
         imgUrl: imgUrl.value,
       }),
     }).then((data) => data.json()).then((req) => {

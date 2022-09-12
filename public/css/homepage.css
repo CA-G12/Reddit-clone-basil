@@ -124,7 +124,7 @@ header div#profile-info {
 }
 
 header div#profile-info p {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 header div#profile-info div {
@@ -430,7 +430,7 @@ aside {
 }
 
 #posts .post .container .content p {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 #posts .post .container .img {
@@ -576,7 +576,7 @@ aside {
 }
 
 #posts .post .container .comments .comment p {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 300;
   width: 100%;
   word-wrap: break-word;

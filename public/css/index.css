@@ -700,7 +700,7 @@ aside .top-news button:hover {
 }
 
 #posts .post .container .content p {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 #posts .post .container .img {
@@ -823,7 +823,7 @@ aside .top-news button:hover {
 }
 
 #posts .post .container .comments .comment p {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 300;
   width: 100%;
   word-wrap: break-word;

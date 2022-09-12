@@ -870,3 +870,195 @@ aside .top-news button:hover {
 }
 
 /* MESSAGE STYLE ENDS */
+
+/* laptop screen tablet */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  main {
+    padding: 5rem 6rem;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  article {
+    gap: 1rem;
+  }
+
+  header #drop-down {
+    width: 170%;
+  }
+
+}
+/* mediam screen tablet */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 5rem 4rem;
+    flex-direction: column-reverse;
+  }
+
+  article {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  aside {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  aside .top-news {
+    gap: 1rem;
+  }
+
+  aside .top-news #head {
+    height: 14vh;
+  }
+
+  aside .top-news ul {
+    padding: 0 6rem;
+
+  }
+
+  #posts {
+    width: 100%;
+  }
+
+  #posts #vote {
+    height: auto;
+  }
+
+  header #drop-down {
+    width: 200%;
+  }
+
+  .layout {
+    z-index: 1000;
+  }
+
+}
+/* small screen mobile */
+@media (max-width: 767.98px) {
+  html {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 10rem 2rem 5rem;
+    flex-direction: column-reverse;
+  }
+
+  article {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  header {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  header div:nth-child(3) {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+
+  }
+
+  header div:nth-child(3) button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  header div:nth-child(2) {
+    order: 3;
+    width: 100%;
+  }
+
+  aside {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  aside .top-news {
+    gap: 1rem;
+  }
+
+  aside .top-news #head {
+    height: 14vh;
+  }
+
+  aside .top-news ul {
+    padding: 0 6rem;
+
+  }
+
+  #posts {
+    width: 100%;
+  }
+
+  #posts #vote {
+    height: auto;
+  }
+
+  header div.profile-cont {
+    position: static;
+  }
+
+  header #drop-down {
+    top: 50%;
+    width: 100%;
+  }
+
+  header #drop-down li {
+    font-size: 1.2rem;
+    padding: 1.3rem 2.2rem;
+  }
+
+  header #drop-down > p {
+    font-size: 1.2rem;
+    padding: 1.3rem 2.2rem;
+  }
+
+  header #drop-down li i {
+    font-size: 1.5rem;
+  }
+
+  header div#profile-info p {
+    font-size: 1.4rem;
+  }
+
+  header div#profile-info div {
+    width: 40px;
+    height: 40px;
+  }
+
+  header #drop-down .checked {
+    width: 60px;
+    height: 30px;
+  }
+
+  header #drop-down .checked .circle {
+    width: 25px;
+    height: 25px;
+  }
+
+  .message {
+    width: 100%;
+    top: 0;
+  }
+  
+  .vanish {
+    right: 0;
+  }
+
+  .layout {
+    z-index: 1000;
+  }
+
+}

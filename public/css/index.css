@@ -147,7 +147,7 @@ header div:nth-child(3) i {
 /* HEADER STYLE ENDS */
 
 main {
-  padding: 5rem 16rem;
+  padding: 5rem 13rem;
   width: 100%;
   height: 100%;
   display: flex;
@@ -200,6 +200,11 @@ article {
   gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+#trending .container .card:hover {
+  transform: scale(1.05);
 }
 
 #trending .container .card:nth-child(1) {
@@ -878,3 +883,212 @@ aside .top-news button:hover {
 }
 
 /* MESSAGE STYLE ENDS */
+
+/* laptop screen tablet */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  main {
+    padding: 5rem 6rem;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  #trending .container {
+    gap: 0.5rem;
+  }
+
+  article {
+    gap: 1rem;
+  }
+
+  .layout section#signup {
+    padding: 1.5rem 6rem 4rem;
+    width: 55%;
+  }
+
+  .layout section#signup #form div {
+    width: 100%;
+  }
+
+  .layout section#login {
+    width: 55%;
+    padding: 1.5rem 6rem 1.5rem;
+  }
+}
+/* mediam screen tablet */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 5rem 4rem;
+  }
+
+  #trending .container {
+    flex-wrap: wrap;
+    gap: 0;
+    height: auto;
+  }
+
+  #trending .container .card{
+    width: calc(98% / 2);
+    margin-top: 1rem;
+    padding-top: 8rem;
+  }
+
+  article {
+    flex-direction: column-reverse;
+  }
+
+  aside {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  aside .top-news {
+    gap: 1rem;
+  }
+
+  aside .top-news #head {
+    height: 14vh;
+  }
+
+  aside .top-news ul {
+    padding: 0 6rem;
+
+  }
+
+  #posts {
+    width: 100%;
+  }
+
+  .layout section#signup {
+    padding: 1.5rem 6rem 4rem;
+    width: 65%;
+  }
+
+  .layout section#signup #form div {
+    width: 100%;
+  }
+
+  .layout section#login {
+    width: 55%;
+    padding: 1.5rem 6rem 1.5rem;
+    width: 65%;
+  }
+
+  #posts #vote {
+    height: auto;
+  }
+
+}
+/* small screen mobile */
+@media (max-width: 767.98px) {
+  html {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 10rem 2rem 5rem;
+  }
+
+  header {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  header div:nth-child(3) {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+
+  }
+
+  header div:nth-child(3) button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  header div:nth-child(3) i {
+    display: none;
+  }
+
+  header div:nth-child(2) {
+    order: 3;
+    width: 100%;
+  }
+
+  #trending .container {
+    flex-wrap: wrap;
+    gap: 0;
+    height: auto;
+  }
+
+  #trending .container .card{
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 8rem;
+  }
+
+  article {
+    flex-direction: column-reverse;
+  }
+
+  aside {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  aside .top-news {
+    gap: 1rem;
+  }
+
+  aside .top-news #head {
+    height: 14vh;
+  }
+
+  aside .top-news ul {
+    padding: 0 6rem;
+
+  }
+
+  #posts {
+    width: 100%;
+  }
+
+  .layout section#signup {
+    padding: 1.5rem 2rem 4rem;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .layout section#signup #form div {
+    width: 100%;
+  }
+
+  .layout section#login {
+    width: 55%;
+    padding: 1.5rem 2rem 1.5rem;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  #posts #vote {
+    height: auto;
+  }
+
+  .message {
+    width: 100%;
+    top: 0;
+  }
+  
+  .vanish {
+    right: 0;
+  }
+
+}
